@@ -483,11 +483,6 @@ body {
   font-family: "Montserrat", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", sans-serif;
 }
 
-/* ハンバーガーボタン押下時に画面固定 */
-.noscroll {
-  overflow: hidden;
-}
-
 a {
   text-decoration: none;
 }
@@ -515,9 +510,9 @@ img {
 
 .header {
   position: relative;
-  z-index: 10;
 }
 .header .header-logo {
+  z-index: 5;
   position: fixed;
   top: 30px;
   left: 60px;
@@ -548,62 +543,8 @@ img {
     left: 15px;
   }
 }
-.header .side-bar {
-  display: none;
-  width: 36.1%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: rgba(34, 34, 34, 0.95);
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.068em;
-}
-.header .side-bar .side-bar-menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 180px auto 0;
-}
-.header .side-bar img {
-  margin: 0 auto 40px;
-}
-.header .side-bar .header-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.header .side-bar .header-nav .nav-item {
-  text-align: center;
-  margin-bottom: 30px;
-}
-.header .side-bar .header-nav .nav-item:last-child {
-  margin-bottom: 0px;
-}
 .header .header-menu {
+  z-index: 20;
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -619,6 +560,8 @@ img {
   width: 60px;
   cursor: pointer;
   color: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 .header .header-menu .burger-btn {
   display: block;
@@ -655,8 +598,8 @@ img {
   bottom: 0px;
 }
 .header .header-menu .burger-btn.close .bar-top {
-  -webkit-transform: translate(-50%, 10px) rotate(45deg);
-          transform: translate(-50%, 10px) rotate(45deg);
+  -webkit-transform: translate(-50%, 5px) rotate(20deg);
+          transform: translate(-50%, 5px) rotate(20deg);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -668,8 +611,8 @@ img {
   transition: opacity 0.3s;
 }
 .header .header-menu .burger-btn.close .bar-bottom {
-  -webkit-transform: translate(-50%, -8px) rotate(-45deg);
-          transform: translate(-50%, -8px) rotate(-45deg);
+  -webkit-transform: translate(-50%, -3px) rotate(-20deg);
+          transform: translate(-50%, -3px) rotate(-20deg);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -829,6 +772,114 @@ img {
   line-height: 36px;
   letter-spacing: 0.015em;
   text-align: center;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+.bg-cover {
+  display: none;
+  position: fixed;
+  /* ブラウザの定位置に固定 */
+  background-color: rgba(34, 34, 34, 0.6);
+  /* 背景色を半透明の黒色に */
+  width: 100%;
+  /* 要素の横幅を画面全体に */
+  height: 100%;
+  /* 要素の高さを画面全体に */
+  top: 0;
+  /* 要素の固定位置をブラウザ最上部に合わせる */
+  left: 0;
+  /* 要素の固定位置をブラウザ左側に合わせる */
+  z-index: 10;
+  /* 要素をコンテンツより前面に（要調整） */
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.side-bar {
+  z-index: 20;
+  width: 36.1%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: rgba(34, 34, 34, 0.95);
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.068em;
+}
+@media (max-width: 768px) {
+  .side-bar {
+    width: 60%;
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 375px) {
+  .side-bar {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+}
+.side-bar .side-bar-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.side-bar .symbol-wrapper {
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+.side-bar .header-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.side-bar .header-nav .nav-item {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.side-bar .header-nav .nav-item:last-child {
+  margin-bottom: 0px;
+}
+
+.side-bar.open {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  opacity: 1;
 }
 
 /* ------------------------------- */

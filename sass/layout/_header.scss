@@ -3,9 +3,9 @@
 
 .header {
     position: relative;
-    z-index: 10;
 
     .header-logo {
+        z-index: 5;
         position: fixed;
         top: 30px;
         left: 60px;
@@ -26,50 +26,16 @@
         }
         @include g.mediaTB {
             left: 30px;
-            width: 190px;        
+            width: 190px;
         }
-        @include g.mediaSP{
+        @include g.mediaSP {
             top: 20px;
             left: 15px;
         }
     }
 
-    .side-bar {
-        // ハンバーガーボタン押下時に表示
-        display: none;
-        width: 36.1%;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background-color: rgba(34, 34, 34, 0.95);
-        @include g.baseFont(2rem, normal, 800, #fff);
-        letter-spacing: g.$title-ls;
-        .side-bar-menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 180px auto 0;
-        }
-        img {
-            margin: 0 auto 40px;
-        }
-        .header-nav {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .nav-item {
-                text-align: center;
-                margin-bottom: 30px;
-                &:last-child {
-                    margin-bottom: 0px;
-                }
-            }
-        }
-    }
     .header-menu {
+        z-index: 20;
         position: fixed;
         display: flex;
         align-items: center;
@@ -79,7 +45,7 @@
         width: 60px;
         cursor: pointer;
         color: #fff;
-
+        transition: 0.3s;
         // スマホ用ハンバーガーボタン
         .burger-btn {
             display: block;
@@ -112,7 +78,7 @@
             }
             // ボタン押下時closeクラス付与
             &.close .bar-top {
-                transform: translate(-50%, 10px) rotate(45deg);
+                transform: translate(-50%, 5px) rotate(20deg);
                 transition: transform 0.3s;
             }
             &.close .bar-mid {
@@ -120,7 +86,7 @@
                 transition: opacity 0.3s;
             }
             &.close .bar-bottom {
-                transform: translate(-50%, -8px) rotate(-45deg);
+                transform: translate(-50%, -3px) rotate(-20deg);
                 transition: transform 0.3s;
             }
         } //ハンバーガーボタン
@@ -139,7 +105,7 @@
                 }
             }
         }
-        @include g.mediaSP{
+        @include g.mediaSP {
             top: 24px;
             right: 15px;
         }

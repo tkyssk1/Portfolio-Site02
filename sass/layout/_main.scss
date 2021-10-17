@@ -4,7 +4,7 @@
 .section-wrapper {
     padding: 60px 11.8%;
     //aboutus
-    &:first-of-type {
+    &.about-wrapper {
         padding-top: 120px;
         position: relative;
         &::after {
@@ -17,35 +17,36 @@
             left: 0;
             z-index: -1;
         }
-        @include g.mediaTB{
-            padding-left: 0px; 
-            padding-right: 0px; 
+        @include g.mediaTB {
+            padding-left: 0px;
+            padding-right: 0px;
         }
     }
     //works & culture
-    &:nth-of-type(2) {
+    &.wc-wrapper {
         padding-top: 20px;
-        @include g.mediaTB{
-            padding: 60px 30px 40px; 
+        @include g.mediaTB {
+            padding: 60px 30px 40px;
         }
-        @include g.mediaSP{
+        @include g.mediaSP {
             padding: 40px 15px;
         }
     }
-    &:last-of-type {
+    //contact
+    &.contact-wrapper {
         padding-bottom: 120px;
-        @include g.mediaTB(){
+        @include g.mediaTB() {
             padding-bottom: 80px;
         }
-        @include g.mediaSP(){
+        @include g.mediaSP() {
             padding-bottom: 40px;
         }
     }
     //tablet
-    @include g.mediaTB(){
+    @include g.mediaTB() {
         padding: 40px 30px;
     }
-    @include g.mediaSP{
+    @include g.mediaSP {
         padding: 40px 15px;
     }
 }
@@ -55,23 +56,48 @@
     margin: 0 auto;
 }
 
-.content-wrapper-twoclm{
+.content-wrapper-twoclm {
     max-width: 1100px;
     margin: 0 auto;
     @include g.tmpFlex();
-}
-//フレックスで逆の順番
-.f-reverse-clm{
-    @include g.mediaTB(){
-        flex-direction: column-reverse;
+    //フレックスでは逆の順番にする場合
+    &.f-reverse-clm {
+        @include g.mediaTB() {
+            flex-direction: column-reverse;
+        }
     }
 }
 
-.section-title{
+.section-title {
     @include g.baseFont(3.2rem, normal, 800, #000);
     margin-bottom: 30px;
     letter-spacing: g.$title-ls;
-    @include g.mediaSP{
+    @include g.mediaSP {
         font-size: 2.8rem;
     }
-}   
+}
+
+.sub-section-title {
+    @include g.baseFont(2.4rem, normal, 800, #000);
+    margin-bottom: 27px;
+    letter-spacing: 0.005em;
+    @include g.mediaSP {
+        margin-bottom: 30px;
+        letter-spacing: 0;
+    }
+}
+
+.concept-text {
+    @include g.baseFont(1.6rem, normal, 400, #000);
+    line-height: 2;
+    //AdobeXDから見た目で微調整
+    letter-spacing: -0.56px;
+    font-family: "Noto Sans JP", sans-serif;
+    @include g.mediaTB {
+        margin-bottom: 30px;
+        font-size: 1.4rem;
+    }
+    @include g.mediaSP {
+        margin-bottom: 0;
+    }
+}

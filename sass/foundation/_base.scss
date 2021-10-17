@@ -30,15 +30,38 @@ img {
 //左配置(block要素)
 .ml-auto {
     margin-left: auto;
-    //レスポンシブでは右に配置
 }
+
+//レスポンシブでは右に配置
 .ml-0-responsive {
     @include g.mediaTB() {
         margin-left: 0px;
     }
 }
 
+//フォント指定
+.fw-normal {
+    font-weight: normal;
+}
+
 //グレー背景
 .bg-gray {
     background-color: #f2f2f2;
+}
+
+// 改行しない
+.no-wrap{
+    white-space: nowrap;
+}
+
+// relative
+.relative{
+    position: relative;
+}
+
+
+hr{
+    height: 1px;
+    width: 100%;
+    color: #DDDDDD;
 }

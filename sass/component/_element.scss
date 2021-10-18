@@ -1,0 +1,12 @@
+// component/_button.scss
+@use "../global" as g;
+
+.link-btn{
+    @include g.baseFont(1.2rem, normal, bold, #fff);
+    background-color: #000;
+    display: block;
+    width: 160px;
+    line-height: 36px;
+    letter-spacing: 0.015em;
+    text-align: center;
+}

@@ -27,6 +27,11 @@ img {
     vertical-align: bottom;
 }
 
+//中央揃え
+.m-0auto {
+    margin: 0 auto;
+}
+
 //左配置(block要素)
 .ml-auto {
     margin-left: auto;
@@ -37,6 +42,10 @@ img {
     @include g.mediaTB() {
         margin-left: 0px;
     }
+}
+//mb-10px
+.mb-10 {
+    margin-bottom: 10px;
 }
 
 //フォント指定
@@ -50,17 +59,47 @@ img {
 }
 
 // 改行しない
-.no-wrap{
+.no-wrap {
     white-space: nowrap;
 }
 
 // relative
-.relative{
+.relative {
     position: relative;
 }
 
+// inputの定型
+input[type="radio"] {
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+  
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    display: block;
+    border: 1px solid #333333;
+    font-size: 1.6rem;
+    width: 100%;
+    padding: 0px 8px;
+    height: 41px;
+    line-height: 41px;
+    // 線を幅に含める
+    box-sizing: border-box;
+}
+textarea {
+    display: block;
+    border: 1px solid #333333;
+    font-size: 1.6rem;
+    padding: 0px 8px;
+    width: 100%;
+    height: 212px;
+    line-height: 2.6rem;
+}
 
-hr{
+//横線
+hr {
     height: 1px;
     width: 100%;
     color: #DDDDDD;

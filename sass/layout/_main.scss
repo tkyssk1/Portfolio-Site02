@@ -50,10 +50,14 @@
         padding: 40px 15px;
     }
 }
-
+// 幅1100px中央
 .content-wrapper {
     max-width: 1100px;
     margin: 0 auto;
+    // 幅700px中央(コンタクトページ専用)
+    &.w700{
+        max-width: 700px;
+    }
 }
 
 .content-wrapper-twoclm {
@@ -100,4 +104,12 @@
     @include g.mediaSP {
         margin-bottom: 0;
     }
+}
+
+.contact-text {
+    @include g.baseFont(1.6rem, normal, 400, #333333);
+    line-height: 1.5;
+    //AdobeXDから見た目で微調整
+    letter-spacing: -0.56px;
+    font-family: "Noto Sans JP", sans-serif;
 }

@@ -16,6 +16,9 @@
         &.about-img {
             @include g.imageRetina(heading-img, top);
         }
+        &.contact-img {
+            @include g.imageRetina(heading-img_contact, top);
+        }
         height: 86.5vh;
         width: 76.4%;
         z-index: 1;

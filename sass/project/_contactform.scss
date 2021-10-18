@@ -55,9 +55,9 @@
 
 // チェックボックスとラジオボタンの装飾
 input[type="checkbox"] {
-    display: none;
-    // appearance: none;
-    // outline: none;
+    // display: none;
+    appearance: none;
+    outline: none;
     width: 28px;
     height: 28px;
     margin: 0 auto;

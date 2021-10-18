@@ -1482,7 +1482,10 @@ hr {
 }
 
 input[type=checkbox] {
-  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
   width: 28px;
   height: 28px;
   margin: 0 auto;

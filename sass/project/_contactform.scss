@@ -54,58 +54,52 @@
 }
 
 // チェックボックスとラジオボタンの装飾
-input[type='checkbox'] {
-    appearance: none;
-    outline: none;
-  
-    display: block;
-    position: relative;
-    text-align: center;
-    cursor: pointer;
-  
+input[type="checkbox"] {
+    display: none;
+    // appearance: none;
+    // outline: none;
     width: 28px;
     height: 28px;
     margin: 0 auto;
-  }
-  
-  // チェックボックスのデザイン
-  input[type='checkbox']::before {
-    display: block;
-    position: absolute;
-    content: '';
-  
-    width: 28px;
-    height: 28px;
+}
+label {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+label::before {
     background: #fff;
-    border: solid 2px #01a2c1;
+    border: 1px solid #ccc;
     border-radius: 3px;
-  }
-  
-  // チェックボックスの背景をチェック後に変更
-  input[type='checkbox']:checked::before {
-    background-color: #01a2c1;
-  }
-  
-  // チェックマークのデザイン
-  input[type='checkbox']::after {
-    display: block;
-  
     content: '';
-    position: absolute;
-    left: 10px;
-    top: 5px;
-  
-    width: 8px;
+    display: block;
     height: 16px;
-    border-right: 3px solid #fff;
-    border-bottom: 3px solid #fff;
-    transform: rotate(45deg);
-  
-    // チェックしてないときは隠す
+    left: 5px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+label::after {
+    border-right: 6px solid #00cccc;
+    border-bottom: 3px solid #00cccc;
+    content: '';
+    display: block;
+    height: 20px;
+    left: 7px;
+    margin-top: -16px;
     opacity: 0;
-  }
-  
-  // チェックするとチェックマークの透明化を解除
-  input[type='checkbox']:checked::after {
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 9px;
+}
+input[type=checkbox]:checked + label::before {
+    border-color: #666;
+}
+input[type=checkbox]:checked + label::after {
     opacity: 1;
-  }
+}

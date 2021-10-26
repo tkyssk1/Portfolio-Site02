@@ -3,6 +3,14 @@
 
 .section-wrapper {
     padding: 60px 11.8%;
+    //tablet
+    @include g.mediaTB() {
+        padding: 40px 30px;
+    }
+    // SmartPhone
+    @include g.mediaSP {
+        padding: 40px 15px;
+    }
     //aboutus
     &.about-wrapper {
         padding-top: 120px;
@@ -42,12 +50,15 @@
             padding-bottom: 40px;
         }
     }
-    //tablet
-    @include g.mediaTB() {
-        padding: 40px 30px;
-    }
-    @include g.mediaSP {
-        padding: 40px 15px;
+    // Vision, ContactForm
+    &.vision-wrapper,
+    &.contactform-wrapper {
+        @include g.mediaTB() {
+            padding: 80px 30px;
+        }
+        @include g.mediaSP {
+            padding: 80px 15px;
+        }
     }
 }
 // 幅1100px中央
@@ -55,7 +66,7 @@
     max-width: 1100px;
     margin: 0 auto;
     // 幅700px中央(コンタクトページ専用)
-    &.w700{
+    &.w700 {
         max-width: 700px;
     }
 }

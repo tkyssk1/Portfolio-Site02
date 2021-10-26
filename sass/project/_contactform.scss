@@ -17,15 +17,29 @@
                     padding: 1px 5px;
                     margin-left: 25px;
                 }
+                @include g.mediaSP{
+                    font-weight: bold;
+
+                }
             }
             //問い合わせ種別
             .category-list {
                 display: flex;
+                @include g.mediaSP{
+                    flex-direction: column;
+                }
                 .category-item {
                     margin-right: 50px;
                     &:last-of-type {
                         margin-right: 0px;
                     }
+                    @include g.mediaSP{
+                        margin-bottom: 15px;
+                        margin-left: 10px; 
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+                    }    
                 }
             }
             //Privacy Policy
@@ -45,87 +59,13 @@
             .policy-check {
                 text-align: center;
                 margin-bottom: 40px;
-                .policy-label {
-                    margin-left: 10px;
+                .policy-label{
+                    font-size: 1.4rem;
+                    // 見た目で文字間隔修正
+                    letter-spacing: -0.05em;
                 }
             }
         }
     }
-}
-
-// チェックボックスとラジオボタンの装飾
-input[type="checkbox"] {
-    // display: none;
-    // appearance: none;
-    // outline: none;
-    
-    // width: 28px;
-    // height: 28px;
-    // margin: 0 auto;
-
-    position: absolute;
-    /* 誤ったコードに対処するための回避策 */
-    white-space: nowrap;
-    /* 可能な限り文字サイズを小さくするための処理
-     * (スクリーンリーダー中には height と width が 0 のものを無視するため)
-     */
-    width: 1px;
-    height: 1px;
-    /* オーバーフローしているコンテンツを隠す */
-    overflow: hidden;
-    /* 要素サイズを変更しうるプロパティのリセット */
-    border: 0;
-    padding: 0;
-    /* 要素のどの部分が表示されるかを定義するもの */
-    /* 古いブラウザでは使用できない */
-    clip: rect(0 0 0 0);
-    /* 最近のブラウザ用
-     * コンテンツを非表示にする設定  */
-    clip-path: inset(50%); 
-    /* 今現在なぜ-1pxがここで設定されるかは分かっていないそうです。
-     * それに加えていくつか問題もあるそうです 
-     * (参考: https://github.com/h5bp/html5-boilerplate/issues/1985)
-     */
-    margin: -1px;
-}
-label {
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: 5px 30px;
-    position: relative;
-    width: auto;
-}
-label::before {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    content: '';
-    display: block;
-    height: 16px;
-    left: 5px;
-    margin-top: -8px;
-    position: absolute;
-    top: 50%;
-    width: 16px;
-}
-label::after {
-    border-right: 6px solid #00cccc;
-    border-bottom: 3px solid #00cccc;
-    content: '';
-    display: block;
-    height: 20px;
-    left: 7px;
-    margin-top: -16px;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    transform: rotate(45deg);
-    width: 9px;
-}
-input[type=checkbox]:checked + label::before {
-    border-color: #666;
-}
-input[type=checkbox]:checked + label::after {
-    opacity: 1;
+    // radioボタン
 }

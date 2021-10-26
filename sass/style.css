@@ -528,10 +528,33 @@ img {
   position: relative;
 }
 
-input[type=radio] {
-  width: 12px;
-  height: 12px;
-  cursor: pointer;
+.visually-hidden {
+  /* コンテンツの流れから切り離す */
+  position: absolute;
+  /* 誤ったコードに対処するための回避策 */
+  white-space: nowrap;
+  /* 可能な限り文字サイズを小さくするための処理
+   * (スクリーンリーダー中には height と width が 0 のものを無視するため)
+   */
+  width: 1px;
+  height: 1px;
+  /* オーバーフローしているコンテンツを隠す */
+  overflow: hidden;
+  /* 要素サイズを変更しうるプロパティのリセット */
+  border: 0;
+  padding: 0;
+  /* 要素のどの部分が表示されるかを定義するもの */
+  /* 古いブラウザでは使用できない */
+  clip: rect(0 0 0 0);
+  /* 最近のブラウザ用
+   * コンテンツを非表示にする設定  */
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  /* 今現在なぜ-1pxがここで設定されるかは分かっていないそうです。
+   * それに加えていくつか問題もあるそうです 
+   * (参考: https://github.com/h5bp/html5-boilerplate/issues/1985)
+   */
+  margin: -1px;
 }
 
 input[type=text],
@@ -561,7 +584,7 @@ textarea {
 hr {
   height: 1px;
   width: 100%;
-  color: #DDDDDD;
+  color: #dddddd;
 }
 
 .header {
@@ -707,6 +730,16 @@ hr {
 .section-wrapper {
   padding: 60px 11.8%;
 }
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 375px) {
+  .section-wrapper {
+    padding: 40px 15px;
+  }
+}
 .section-wrapper.about-wrapper {
   padding-top: 120px;
   position: relative;
@@ -754,13 +787,13 @@ hr {
   }
 }
 @media (max-width: 768px) {
-  .section-wrapper {
-    padding: 40px 30px;
+  .section-wrapper.vision-wrapper, .section-wrapper.contactform-wrapper {
+    padding: 80px 30px;
   }
 }
 @media (max-width: 375px) {
-  .section-wrapper {
-    padding: 40px 15px;
+  .section-wrapper.vision-wrapper, .section-wrapper.contactform-wrapper {
+    padding: 80px 15px;
   }
 }
 
@@ -876,6 +909,90 @@ hr {
   line-height: 36px;
   letter-spacing: 0.015em;
   text-align: center;
+}
+
+.radio-type01 + label {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.radio-type01 + label::before {
+  content: "";
+  display: block;
+  background-color: #fff;
+  border: 1px solid #333333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.radio-type01 + label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #333333;
+  border-radius: 50%;
+  opacity: 0;
+  width: 12px;
+  height: 12px;
+  left: 4px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.radio-type01:checked + label::after {
+  opacity: 1;
+}
+
+.checkbox01 + label {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+.checkbox01 + label::before {
+  content: "";
+  display: block;
+  background-color: #fff;
+  border: 1px solid #333333;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.checkbox01 + label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  opacity: 0;
+  border-right: 2px solid #333;
+  border-bottom: 2px solid #333;
+  width: 6px;
+  height: 12px;
+  top: 3px;
+  left: 7px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.checkbox01:checked + label::after {
+  opacity: 1;
 }
 
 .noscroll {
@@ -1446,16 +1563,38 @@ hr {
   padding: 1px 5px;
   margin-left: 25px;
 }
+@media (max-width: 375px) {
+  .form-wrapper .form-list .form-item .form-label {
+    font-weight: bold;
+  }
+}
 .form-wrapper .form-list .form-item .category-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+@media (max-width: 375px) {
+  .form-wrapper .form-list .form-item .category-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 .form-wrapper .form-list .form-item .category-list .category-item {
   margin-right: 50px;
 }
 .form-wrapper .form-list .form-item .category-list .category-item:last-of-type {
   margin-right: 0px;
+}
+@media (max-width: 375px) {
+  .form-wrapper .form-list .form-item .category-list .category-item {
+    margin-bottom: 15px;
+    margin-left: 10px;
+  }
+  .form-wrapper .form-list .form-item .category-list .category-item:last-of-type {
+    margin-bottom: 0;
+  }
 }
 .form-wrapper .form-list .form-item .policy-title {
   font-size: 1.6rem;
@@ -1478,82 +1617,7 @@ hr {
   margin-bottom: 40px;
 }
 .form-wrapper .form-list .form-item .policy-check .policy-label {
-  margin-left: 10px;
-}
-
-input[type=checkbox] {
-  position: absolute;
-  /* 誤ったコードに対処するための回避策 */
-  white-space: nowrap;
-  /* 可能な限り文字サイズを小さくするための処理
-   * (スクリーンリーダー中には height と width が 0 のものを無視するため)
-   */
-  width: 1px;
-  height: 1px;
-  /* オーバーフローしているコンテンツを隠す */
-  overflow: hidden;
-  /* 要素サイズを変更しうるプロパティのリセット */
-  border: 0;
-  padding: 0;
-  /* 要素のどの部分が表示されるかを定義するもの */
-  /* 古いブラウザでは使用できない */
-  clip: rect(0 0 0 0);
-  /* 最近のブラウザ用
-   * コンテンツを非表示にする設定  */
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  /* 今現在なぜ-1pxがここで設定されるかは分かっていないそうです。
-   * それに加えていくつか問題もあるそうです 
-   * (参考: https://github.com/h5bp/html5-boilerplate/issues/1985)
-   */
-  margin: -1px;
-}
-
-label {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  cursor: pointer;
-  display: inline-block;
-  padding: 5px 30px;
-  position: relative;
-  width: auto;
-}
-
-label::before {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  content: "";
-  display: block;
-  height: 16px;
-  left: 5px;
-  margin-top: -8px;
-  position: absolute;
-  top: 50%;
-  width: 16px;
-}
-
-label::after {
-  border-right: 6px solid #00cccc;
-  border-bottom: 3px solid #00cccc;
-  content: "";
-  display: block;
-  height: 20px;
-  left: 7px;
-  margin-top: -16px;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  width: 9px;
-}
-
-input[type=checkbox]:checked + label::before {
-  border-color: #666;
-}
-
-input[type=checkbox]:checked + label::after {
-  opacity: 1;
+  font-size: 1.4rem;
+  letter-spacing: -0.05em;
 }
 /*# sourceMappingURL=style.css.map */
